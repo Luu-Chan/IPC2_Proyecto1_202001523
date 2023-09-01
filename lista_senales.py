@@ -17,11 +17,8 @@ class lista_senales:
         self.contador_senales+=1
     
     def recorrer_e_imprimir_lista(self):
-        print("Total de señales almacenadas:",self.contador_senales)
-        print("")
-        print("")
-        print("")
-        print("******************************************************************")
+        print("Total de señales almacenadas:",self.contador_senales + "\n")
+        print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
         actual=self.primero
         while actual != None:
             print("Nombre:",actual.senal.nombre,"T:",actual.senal.tiempo,
@@ -29,13 +26,9 @@ class lista_senales:
             actual.senal.lista_datos.recorrer_e_imprimir_lista()
             actual.senal.lista_patrones_datos.recorrer_e_imprimir_lista()
             actual=actual.siguiente
-            print("")
-            print("")
-            print("")
-        print("******************************************************************")
-        print("")
-        print("")
-        print("")
+            print("\n")
+        print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
+        print("\n")
     
 
     def grafica_mi_lista_original(self):

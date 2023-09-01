@@ -66,7 +66,7 @@ class lista_datos:
         f.write(text)
         f.close()
         os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
-        os.system('dot -Tpng bb.dot -o 29agosto.png')
+        os.system('dot -Tpng bb.dot -o Gafrica.png')
         print("terminado")
 
 

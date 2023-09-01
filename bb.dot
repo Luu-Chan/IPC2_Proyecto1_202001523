@@ -1,11 +1,11 @@
 
-            digraph G {"niveles=Señal Facilita","CeldasNivel=10"->" 3" bgcolor="#3990C4" style="filled"
+            digraph G {"niveles=Señal Facilita","CeldasNivel=None"->" 3" bgcolor="#3990C4" style="filled"
             subgraph cluster1 {fillcolor="blue:red" style="filled"
             node [shape=circle fillcolor="gold:brown" style="radial" gradientangle=180]
             a0 [ label=<
             <TABLE border="10" cellspacing="10" cellpadding="10" style="rounded" bgcolor="blue:red" gradientangle="315">
 <TR><TD border="3"  bgcolor="yellow" gradientangle="315">3</TD>
-<TD border="3"  bgcolor="yellow" gradientangle="315">5</TD>
+<TD border="3"  bgcolor="yellow" gradientangle="315">0</TD>
 <TD border="3"  bgcolor="yellow" gradientangle="315">4</TD>
 </TR>
 <TR><TD border="3"  bgcolor="yellow" gradientangle="315">1</TD>
