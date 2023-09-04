@@ -17,7 +17,7 @@ class lista_senales:
         self.contador_senales+=1
     
     def recorrer_e_imprimir_lista(self):
-        print("Total de señales almacenadas:",self.contador_senales + "\n")
+        print("Total de señales almacenadas:",self.contador_senales)
         print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
         actual=self.primero
         while actual != None:
@@ -48,3 +48,5 @@ class lista_senales:
                                                     str(actual.senal.amplitudes))
             #actual.senal.lista_patrones_celdas.recorrer_e_imprimir_lista()
             actual=actual.siguiente
+
+    
