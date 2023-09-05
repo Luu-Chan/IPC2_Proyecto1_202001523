@@ -2,6 +2,8 @@ from tkinter.filedialog import askopenfilename
 import xml.etree.ElementTree as ET
 from lista_datos import lista_datos
 from lista_senales import lista_senales
+from lista_patrones import lista_patrones
+from lista_grupos import lista_grupos
 from dato import dato
 from senal import senal
 
@@ -25,33 +27,30 @@ def manipular_archivo():
     lista_senales_temporal=lista_senales()
     global raiz
     for senal_temporal in raiz.findall('senal'):
-        # Obtener atributos principales (nombre, niveles, amplitud)
         nombre_senal=senal_temporal.get('nombre')
         tiempo=senal_temporal.get('t')
         amplitud=senal_temporal.get('A')
         # Inicializamos nuestras listas
-        lista_celdas_temporal=lista_datos()
-        lista_celdas_patrones_temporal=lista_datos()
+        lista_datos_temporal=lista_datos()
+        lista_datos_patrones_temporal=lista_datos()
+        lista_patrones_temporal = lista_patrones()
+        lista_grupos_temporal = lista_grupos()
         for datos in senal_temporal.findall('dato'):
             tiempo_dato=datos.get('t')
             amplitud_dato=datos.get('A')
             seña_dato=datos.text
-            if seña_dato !="NULL":
-                nuevo=dato(int(tiempo_dato),int(amplitud_dato),seña_dato)
-                lista_celdas_temporal.insertar_dato(nuevo)
-            else:
-                nuevo=dato(int(tiempo_dato),int(amplitud_dato),0)
-                lista_celdas_temporal.insertar_dato(nuevo)
-                # Inserción en lista de patrones celda
-            if seña_dato !="NULL" and seña_dato != "0":
+            nuevo = dato(int(tiempo_dato), int(amplitud_dato), seña_dato)
+            lista_datos_temporal.insertar_dato_ordenado(nuevo)
+            if seña_dato != "0":
                 nuevo=dato(int(tiempo_dato),int(amplitud_dato),1)
-                lista_celdas_patrones_temporal.insertar_dato(nuevo)
+                lista_datos_patrones_temporal.insertar_dato(nuevo)
             else:
                 nuevo=dato(int(tiempo_dato),int(amplitud_dato),0)
-            lista_celdas_patrones_temporal.insertar_dato(nuevo)
+            lista_datos_patrones_temporal.insertar_dato(nuevo)
         lista_senales_temporal.insertar_dato(senal(nombre_senal,tiempo,amplitud,
-                                                lista_celdas_temporal,lista_celdas_patrones_temporal))
+                                                lista_datos_temporal,lista_datos_patrones_temporal, lista_patrones_temporal, lista_grupos_temporal))
     lista_senales_temporal.recorrer_e_imprimir_lista()
+    lista_senales_temporal.calcular_los_patrones("Señal Facilita")
     #lista_senales_temporal.grafica_mi_lista_original()
 
 
@@ -88,11 +87,13 @@ while True:
         print("Nombre: Luis Gabriel Lopez Polanco")
         print("Carnet: 202001523")
         print("DPI: 3004390830101 \n")
+        print("Curso: Introduccion a la Programacion y Computacion 2")
         print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
 
     elif opcion == "5":
-        print("Generar Grafica")
+        print("============== Generando Grafica..........===================")
         lista_senales.grafica_mi_lista_original(lista_senales_temporal)
+        print("Grafica generada Exitosamente! \n")
 
     elif opcion == "6":
         print("Reiniciar Windows")
