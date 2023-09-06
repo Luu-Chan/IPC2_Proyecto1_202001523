@@ -10,6 +10,8 @@ from senal import senal
 
 raiz = None
 lista_senales_temporal = None
+lista_grupos_temporal = None
+nombre_senal = None
 
 def cargar_archivo():
     global raiz
@@ -24,6 +26,9 @@ def cargar_archivo():
     
 def manipular_archivo():
     global lista_senales_temporal
+    global lista_grupos_temporal
+    global nombre_senal
+    lista_grupos_temporal= lista_grupos()
     lista_senales_temporal=lista_senales()
     global raiz
     for senal_temporal in raiz.findall('senal'):
@@ -50,10 +55,8 @@ def manipular_archivo():
         lista_senales_temporal.insertar_dato(senal(nombre_senal,tiempo,amplitud,
                                                 lista_datos_temporal,lista_datos_patrones_temporal, lista_patrones_temporal, lista_grupos_temporal))
     lista_senales_temporal.recorrer_e_imprimir_lista()
-    lista_senales_temporal.calcular_los_patrones("Señal Facilita")
-    #lista_senales_temporal.grafica_mi_lista_original()
-
-
+    #lista_senales_temporal.calcular_los_patrones("Señal Facilita")
+    
 def mostrar_menu():
     print("=============================================="+ "\n")
     print("BIENVENIDO SELECCIONE UNA OPCION" + "\n")
@@ -86,20 +89,29 @@ while True:
         print("Datos del estudiante:")
         print("Nombre: Luis Gabriel Lopez Polanco")
         print("Carnet: 202001523")
-        print("DPI: 3004390830101 \n")
-        print("Curso: Introduccion a la Programacion y Computacion 2")
+        print("DPI: 3004390830101")
+        print("Curso: Introduccion a la Programacion y Computacion 2 \n")
         print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
 
     elif opcion == "5":
-        print("============== Generando Grafica..........===================")
-        lista_senales.grafica_mi_lista_original(lista_senales_temporal)
+        
+        print("Seleccione Grafica a generar:")
+        print("1 - Grafica original ")
+        print("2 - Grafica matriz reducida")
+        eleccion = input("Ingrese una opcion: ")
+        if eleccion == "1":
+            print("============== Generando Grafica..........===================")
+            lista_senales.grafica_mi_lista_original(lista_senales_temporal)
+        else :
+            print("============== Generando Grafica..........===================")
+            lista_senales_temporal.calcular_los_patrones(nombre_senal)
+            
         print("Grafica generada Exitosamente! \n")
 
     elif opcion == "6":
         print("Reiniciar Windows")
-        
+        lista_datos.formatear()
 
-    elif opcion == "7":
         print("Saliendo..." + "\n")
         break
     

@@ -17,14 +17,6 @@ class lista_patrones:
     actual.siguiente = nodo_patron(patron=patron)
     self.contador_patrones+=1
 
-  def recorrer_e_imprimir_lista(self):
-    print("===========================================================================================")
-    actual = self.primero
-    while actual != None:
-      print(" Nivel: ",actual.patron.nivel,"Cadena-Patron: ",actual.patron.cadena_patron)
-      actual = actual.siguiente
-    print("===========================================================================================")
-
   def eliminar(self,nivel):
     actual = self.primero
     anterior = None
@@ -38,32 +30,31 @@ class lista_patrones:
       anterior.siguiente = actual.siguiente
       actual.siguiente = None
 
+
+  def recorrer_e_imprimir_lista(self):
+    print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
+    actual = self.primero
+    while actual != None:
+      print(" Senales: ",actual.patron.nivel,"Reducida: ",actual.patron.cadena_patron)
+      actual = actual.siguiente
+    print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
   
   def encontrar_coincidencias(self):
-    print("")
-    print("")
-    print("")
-    print("")
-    resultado = ""  # Inicializa un string vacío para almacenar el resultado final  
-    # Bucle principal que se ejecuta mientras haya nodos en la lista
+    print("\n")
+    print("\n")
+    resultado = "" 
     while self.primero:
-      actual = self.primero  # Comienza desde el primer nodo en la lista
-      temp_string = ""  # String temporal para almacenar niveles coincidentes
-      temp_niveles = ""  # Lista temporal para almacenar niveles      
-      # Bucle interno para recorrer la lista de nodos y buscar coincidencias
-      
+      actual = self.primero  
+      temp_string = ""  
+      temp_niveles = ""  
       while actual:
         if actual.patron.cadena_patron == self.primero.patron.cadena_patron:
-          temp_niveles+=(str(actual.patron.nivel))+","  # Agrega el nivel a la lista temporal
-          # Si no hay nodo siguiente, elimina el primer nodo
+          temp_niveles+=(str(actual.patron.nivel))+","  
         actual=actual.siguiente
-      # Terminamos la iteración, quiere decir que ya tenemos la coincidencias:
       buffer=""
-      #print(temp_niveles)
       for digito in temp_niveles:
         if digito.isdigit():
           buffer+=digito
-        #Quiere decir que viene una coma
         else:
           if buffer!="":
             self.eliminar(int(buffer))
@@ -71,4 +62,4 @@ class lista_patrones:
           else:
             buffer=""
       resultado+=temp_niveles+"--"
-    return resultado  # Devuelve el resultado final con la agrupación de niveles
+    return resultado 

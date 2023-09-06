@@ -6,6 +6,11 @@ class lista_senales:
         self.primero=None
         self.contador_senales=0
     
+    def formatear(self):
+        self.primero = ""
+
+
+
     def insertar_dato(self,senal):
         if self.primero is None:
             self.primero=nodo_senal(senal=senal)
@@ -41,32 +46,15 @@ class lista_senales:
             #actual.senal.lista_patrones_datos.recorrer_e_imprimir_lista()
             actual=actual.siguiente
 
-    def grafica_mi_lista_de_patrones(self):
-        actual=self.primero
-        while actual != None:
-            actual.senal.lista_patrones_datos.generar_grafica(actual.senal.nombre,
-                                                    str(actual.senal.tiempo),
-                                                    str(actual.senal.amplitudes))
-            #actual.senal.lista_patrones_datos.recorrer_e_imprimir_lista()
-            actual=actual.siguiente
-
     def calcular_los_patrones(self,nombre_senal):
-        # recorremos la lista de carceles hasta encontrar una coincidencia
         actual = self.primero
         while actual != None:
-        # Si entra al if, es por que encontramos la senal que queremos
             if actual.senal.nombre==nombre_senal:
-                # Obtenemos sus patrones
                 actual.senal.lista_patrones_nivel=actual.senal.lista_patrones_datos.devolver_patrones_por_nivel(actual.senal.lista_patrones_nivel)
-                # Imprimimos todos sus patrones
                 actual.senal.lista_patrones_nivel.recorrer_e_imprimir_lista()
-                # obtenemos los grupos
                 lista_patrones_temporal=actual.senal.lista_patrones_nivel
                 grupos_sin_analizar=lista_patrones_temporal.encontrar_coincidencias()
-                # Este es un string, por ejemplo "1,2--3,5--4"
                 print(grupos_sin_analizar)
-                # por cada grupo recorrer la matriz original e ir devolviendo las coordenadas especificadas
-                #recordando que por cada coincidencia encontrada, se va borrando para dejar solo las que no tienen grupo.
                 buffer=""
                 for digito in grupos_sin_analizar:
                     if digito.isdigit() or digito==",":
@@ -78,6 +66,7 @@ class lista_senales:
                     else:
                         buffer=""
                 actual.senal.lista_grupos.recorrer_e_imprimir_lista() 
+                actual.senal.lista_grupos.generar_grafica(actual.senal.nombre, str(actual.senal.tiempo), str(actual.senal.amplitudes))
                 return
             actual=actual.siguiente
         print ("No se encontró la senal")

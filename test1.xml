@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <senales>
-  <senal nombre="Señal Facilita" t1="0" A="3">
+  <senal nombre="Señal Facilita" t="10" A="3">
     <dato t="1" A="1">3</dato>
     <dato t="1" A="2">0</dato>
     <dato t="1" A="3">4</dato>
