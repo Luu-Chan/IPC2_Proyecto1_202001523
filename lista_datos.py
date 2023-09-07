@@ -22,6 +22,7 @@ class lista_datos:
 
     def formatear(self):
         self.primero = None
+        self.contador_datos = 0
 
         
     def insertar_dato_ordenado(self, dato):

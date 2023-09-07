@@ -6,10 +6,10 @@ class lista_senales:
         self.primero=None
         self.contador_senales=0
     
+
     def formatear(self):
-        self.primero = ""
-
-
+        self.primero = None
+        self.contador_senales = 0
 
     def insertar_dato(self,senal):
         if self.primero is None:

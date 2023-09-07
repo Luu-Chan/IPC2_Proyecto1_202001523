@@ -12,6 +12,7 @@ raiz = None
 lista_senales_temporal = None
 lista_grupos_temporal = None
 nombre_senal = None
+lista_datos_patrones_temporal = None
 
 def cargar_archivo():
     global raiz
@@ -94,8 +95,6 @@ while True:
         print("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n")
 
     elif opcion == "5":
-        
-        print("Seleccione Grafica a generar:")
         print("1 - Grafica original ")
         print("2 - Grafica matriz reducida")
         eleccion = input("Ingrese una opcion: ")
@@ -109,9 +108,14 @@ while True:
         print("Grafica generada Exitosamente! \n")
 
     elif opcion == "6":
-        print("Reiniciar Windows")
-        lista_datos.formatear()
+        print("Reiniciar Windows \n")
+        lista_senales_temporal.formatear()
+        lista_senales_temporal.recorrer_e_imprimir_lista()
+        raiz = None
+        print("Se ha borrado la carpeta System 32 exitosamente!")
 
+    
+    elif opcion == "7":
         print("Saliendo..." + "\n")
         break
     
